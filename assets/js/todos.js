@@ -23,7 +23,6 @@ $("input[type='text']").on("keypress", function(event){
 });
 
 
-
 //The hard & longer way
 // //if li is gray
 // if($(this).css("color") === "rgb(128, 128, 128)"){
