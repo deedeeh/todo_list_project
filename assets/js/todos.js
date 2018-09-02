@@ -1,18 +1,30 @@
 //Check off specific todos by clicking
-$("li").click(function(){
-  //one line of code by creating a class in css and use toggleClass method
+//The easy & shorter way
+$("ul").on("click", "li", function(){
   $(this).toggleClass("completed");
 });
 
 //Click on X to delete Todo
-$("span").click(function(e){
+$("ul").on("click", "span", function(event){
   $(this).parent().fadeOut(500,function(){
     $(this).remove();
   });
-  e.stopPropagation();
+  event.stopPropagation();
 });
 
-//The harder & longer way of doing it
+$("input[type='text']").on("keypress", function(event){
+  if(event.which === 13){
+    //grabbing new todo text from input
+    var todoText = $(this).val();
+    $(this).val("");
+    //create a new li and add to ul
+    $("ul").append(`<li><span>X</span> ${todoText}</li>`);
+  }
+});
+
+
+
+//The hard & longer way
 // //if li is gray
 // if($(this).css("color") === "rgb(128, 128, 128)"){
 //   //turn it black
